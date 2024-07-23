@@ -1,0 +1,16 @@
+{
+    "name": "Com.A9.A9019",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8a65b104d2cf848c7a5178a1fe80efc4"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
