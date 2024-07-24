@@ -1,0 +1,17 @@
+{
+  "name": "com.a9.a9019",
+  "version": "1.0.1",
+  "description": "A9019",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyhzz/com.a9.a9019.git"
+  },
+  "author": "A9019",
+  "keywords": [
+    "git",
+    "editor"
+  ],
+  "displayName": "A9 A9019",
+  "unity": "2020.3"
+}
