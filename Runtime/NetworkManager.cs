@@ -44,6 +44,8 @@ namespace Com.A9.A9019
                 str = JsonConvert.SerializeObject(pst);
             }
 
+            Debug.LogError(str);
+
             byte[] bt = System.Text.Encoding.UTF8.GetBytes(str);
 
             UnityWebRequest req = new UnityWebRequest(url, "POST", new DownloadHandlerBuffer(), new UploadHandlerRaw(bt));
