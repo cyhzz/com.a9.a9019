@@ -8,11 +8,18 @@ using Com.A9.Singleton;
 
 namespace Com.A9.A9019
 {
+    public enum LogLevel
+    {
+        NONE,
+        NORMAL,
+        FORCE_ERROR
+    }
     public class NetworkManager : Singleton<NetworkManager>
     {
         public Queue<IEnumerator> corontine_queue = new Queue<IEnumerator>();
         //Hierarchy
         public bool is_internet;
+        public LogLevel log = LogLevel.NORMAL;
 
         protected override void Awake()
         {
@@ -44,7 +51,10 @@ namespace Com.A9.A9019
                 str = JsonConvert.SerializeObject(pst);
             }
 
-            Debug.LogError(str);
+            if (instance.log == LogLevel.NORMAL)
+                Debug.Log(str);
+            if (instance.log == LogLevel.FORCE_ERROR)
+                Debug.LogError(str);
 
             byte[] bt = System.Text.Encoding.UTF8.GetBytes(str);
 
@@ -54,12 +64,19 @@ namespace Com.A9.A9019
             yield return req.SendWebRequest();
             if (req.result != UnityWebRequest.Result.Success)
             {
-                Debug.LogError(req.error);
+                if (instance.log == LogLevel.FORCE_ERROR || instance.log == LogLevel.NORMAL)
+                {
+                    Debug.LogError(req.error);
+                }
                 OnFail?.Invoke();
             }
             else
             {
-                Debug.LogError(req.downloadHandler.text);
+                if (instance.log == LogLevel.NORMAL)
+                    Debug.Log(req.downloadHandler.text);
+                if (instance.log == LogLevel.FORCE_ERROR)
+                    Debug.LogError(req.downloadHandler.text);
+
                 OnSuccessCallBack?.Invoke(req.downloadHandler.text);
             }
             instance.is_internet = false;
