@@ -54,12 +54,12 @@ namespace Com.A9.A9019
             yield return req.SendWebRequest();
             if (req.result != UnityWebRequest.Result.Success)
             {
-                Debug.Log(req.error);
+                Debug.LogError(req.error);
                 OnFail?.Invoke();
             }
             else
             {
-                Debug.Log(req.downloadHandler.text);
+                Debug.LogError(req.downloadHandler.text);
                 OnSuccessCallBack?.Invoke(req.downloadHandler.text);
             }
             instance.is_internet = false;
